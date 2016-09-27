@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: SiMoms
+        psr4_prefix: SiMoms
+        src_path: app

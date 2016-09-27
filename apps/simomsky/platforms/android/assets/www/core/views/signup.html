@@ -1,0 +1,22 @@
+<ion-view view-title="Signup">
+  <ion-content class="momsky-bg">
+    <div class="login-box">
+     <div class="flat">
+       <div class="content login-logo">
+          <img src="img/simomsky.png" style="width:200px;height:200px;padding-bottom:0px;margin-top:0px;">
+       </div>
+     </div>
+      <div class="list">
+        <ion-md-input placeholder="Nama" highlight-color="calm" type="text" ng-model="credentials.name"></ion-md-input>
+        <ion-md-input placeholder="Email" highlight-color="calm" type="email" ng-model="credentials.email"></ion-md-input>
+        <ion-md-input placeholder="Username" highlight-color="calm" type="text" ng-model="credentials.username"></ion-md-input>
+        <ion-md-input placeholder="No. Telp" highlight-color="calm" type="text" ng-model="credentials.phone"></ion-md-input>
+        <ion-md-input placeholder="Password" highlight-color="calm" type="password" ng-model="credentials.password"></ion-md-input>
+      </div>
+      <div>
+        <button ng-click="register()" class="button button-full button-flat button-calm ink">Daftar</button>
+      </div>
+    </div>
+    <div class="text-center light" style="margin-top: 5px">Sudah menjadi member ? Silahkan <a ui-sref="login">Masuk</a></div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view view-title="Si Momsky">
+  <ion-content>
+   <ion-refresher
+       pulling-text="Tarik Untuk Memperbarui..."
+       on-refresh="refreshHome()">
+     </ion-refresher>
+    <div class="product-overview">
+      <div class="product-list">
+        <div class="pad-sides" masonry="{columnWidth: 0, gutter: 0, transitionDuration: 0}">
+          <div class="masonry-brick" ng-repeat="mom in moms" >
+            <div class="list card flat" ng-click="showDetails(mom.id)">
+              <div class="item item-body">
+               <img src="img/moms.png"/>
+                <h2 class="title">{{ mom.name }}</h2>
+                <div class="price"><span class="assertive">{{mom.city}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,97 @@
+<ion-view view-title="Detail Moms">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Tarik untuk memperbarui..."
+      on-refresh="getMom()">
+    </ion-refresher>
+     <div class="hero assertive-bg" style="height:250px;">
+          <div class="row">
+           <div class="col">
+             <div class="border-box order-detail">
+               <i class="icon ion-woman"></i>
+               <span class="small-text">Nama</span>
+               <span class="medium-text">{{mom.name}} ({{mom.age}})</span>
+             </div>
+           </div>
+           <div class="col">
+             <div class="border-box order-detail">
+               <i class="icon ion-android-home"></i>
+               <span class="small-text">Alamat</span>
+               <span class="medium-text">{{mom.address}}, {{mom.city}}</span>
+             </div>
+           </div>
+         </div>
+          <div class="row">
+            <div class="col">
+              <div class="border-box order-detail">
+                <i class="icon ion-clock"></i>
+                <span class="small-text">Daftar</span>
+                <span class="medium-text">{{mom.created_at}}</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border-box order-detail">
+                <i class="icon ion-android-contact"></i>
+                <span class="small-text">Kehamilan Ke</span>
+                <span class="medium-text">{{mom.pregnants}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" ng-repeat="pregnant in pregnants" ng-show="available == true" ng-click="showPregnants(pregnant.id)">
+         <div class="item item-divider">
+          Tanggal Periksa : {{pregnant.created_at}}
+         </div>
+         <div class="item item-text-wrap">
+           <div class ="row">
+            <span ng-class="getStatusClass(pregnant.status)">{{pregnant.status}}</span>
+             Kehamilan Ke : {{pregnant.pregnants}}<br>
+             Estimasi Kelahiran : {{pregnant.estimate}}<br>
+             Menstruasi Terakhir : {{pregnant.last_period}}<br>
+           </div>
+         </div>
+        </div>
+        <div class="empty-result" ng-show="available == false">
+          <div class="icon-empty">
+            <span class="icon ion-sad icon-warning assertive"></span>
+            <i class="icon ion-ios-list"></i>
+          </div>
+          <p>Tidak ada histori kehamilan</p><br>
+        </div>
+      </ion-content>
+      <ion-footer-bar class="bar-light custom-footer" ng-show="add == true" >
+        <div class="row">
+          <div class="col"><button class="button button-balanced button-block" ng-click="openAddModal()"><i class="icon ion-android-add-circle"></i> Tambah Kehamilan</button></div>
+        </div>
+      </ion-footer-bar>
+
+
+</ion-view>
+
+<script id="add-pregnant.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="flat bar-assertive bar-modal">
+            <h1 class="title left" style="text-align:center">Tambah Kehamilan</h1>
+            <button class="button button-icon button-clear ion-close-round" ng-click="closeAddModal()"></button>
+        </ion-header-bar>
+        <ion-content>
+        <div class="padding">
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Kehamilan Ke</span>
+            <input type="text" placeholder="" ng-model="params.pregnants" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Periode Terakhir Menstruasi</span>
+            <input type="text" placeholder="yyyy-mm-dd" ng-model="params.last_period" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Estimasi Kelahiran</span>
+            <input type="text" placeholder="yyyy-mm-dd" ng-model="params.estimate" >
+          </label>
+        </div>
+        <button class="button button-balanced button-block" ng-click="addPregnant()">Simpan</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+</script>

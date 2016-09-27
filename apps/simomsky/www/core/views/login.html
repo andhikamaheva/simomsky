@@ -1,0 +1,33 @@
+<ion-view view-title="Login">
+  <ion-content class="bg-logo">
+   <div class="login-box">
+    <div class="flat">
+      <div class="content login-logo">
+        <img src="img/SimomskyWarna.png" style="width:200px;height:180px;padding-bottom:0px;margin-top:0px;">
+
+      </div>
+    </div>
+
+
+      <div class="list" style="background-color:white;border-radius:5px;">
+       <label class="item item-input" style="border-bottom:1px solid gray">
+       <i class="ion-ios-person-outline placeholder-icon" style="font-size:30px"></i>
+       <input type="text" placeholder="Username" ng-model="credentials.username">
+       </label>
+     <label class="item item-input" style="color:black">
+       <i class="ion-ios-locked-outline placeholder-icon" style="font-size:30px"></i>
+       <input type="password" placeholder="Password" style="color:black" ng-model="credentials.password">
+     </label>
+      </div>
+      <div>
+        <button ng-click="login()" class="button button-full button-flat button-assertive ink">Masuk</button>
+        <div class="row">
+         <div class="col">
+          <div class="text-center light" style="margin-top: 5px">Made with <i class="ion-heart" style="color:red"></i> in Stikom Surabaya</div>
+         </div>
+
+        </div>
+    <!--<div class="text-center light" style="margin-top: 5px"><a ui-sref="forgot-password">Lupa password ?</a></div>
+     <div class="text-center light" style="margin-top: 5px">Belum memiliki akun ? Silahkan <a ui-sref="signup">Daftar Disini</a></div>-->
+  </ion-content>
+</ion-view>

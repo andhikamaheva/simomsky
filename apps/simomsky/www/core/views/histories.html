@@ -1,0 +1,37 @@
+<ion-view view-title="Histori" align-title="center">
+<ion-content>
+ <div class="bar-stable bar-subheader with-button-bar" style="background-color:#F8F8F8;">
+    <div class="button-bar button-flat">
+      <a class="button flat" ng-class="{'active': done == false }" ng-click="filterInProgress()">Masa Hamil</a>
+      <a class="button flat" ng-class="{'active': done == true }" ng-click="filterDone()">Selesai</a>
+    </div>
+  </div>
+   <div class="empty-result" ng-show="done == false  && emptyProgress == false">
+     <div class="icon-empty">
+       <span class="icon ion-sad icon-warning assertive"></span>
+       <i class="icon ion-ios-list"></i>
+     </div>
+     <p>Anda tidak mempunyai histori moms yang dalam masa hamil.</p><br>
+   </div>
+    <div class="empty-result" ng-show="done == true  && emptyDone == false">
+      <div class="icon-empty">
+        <span class="icon ion-sad icon-warning assertive"></span>
+        <i class="icon ion-ios-list"></i>
+      </div>
+      <p>Anda tidak mempunyai histori moms yang telah melahirkan.</p><br>
+    </div>
+    <ion-refresher
+      pulling-text="Tarik Untuk Memperbaharui..."
+      on-refresh="getMoms()">
+    </ion-refresher>
+    <div class="list order-list">
+    <a ng-repeat="list in lists | filter:{done:done}" class="item item-avatar" ng-click="showDetails(list.id)">
+      <div class="progress">
+        {{list.progress}}<small> %</small>
+      </div>
+      <h2>#{{list.id}} {{list.name}}<small><span class="badge" ng-class="getStatusClass(list.pregnant_status)">{{list.pregnant_status}}</span></small></h2>
+      <span class="price calm">{{list.city}}</span>
+    </a>
+  </div>
+  </ion-content>
+</ion-view>

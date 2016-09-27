@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ion-md-input/css/ion-md-input.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/ionic.material.css" rel="stylesheet">
+    <link href="lib/foodicon/flaticon.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-material/ionic.material.min.js"></script>
+    <script src="lib/ion-md-input/js/ion-md-input.min.js"></script>
+
+    <script src="lib/ng-cordova/dist/ng-cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
+    <script>
+  // Biar enak kalo coba via browser komputer aja. hehehe
+  if(window.location.origin != "http://localhost"){
+    document.write("<script src='cordova.js'></\script>");
+  }
+</script>
+
+    <script src="core/app.js"></script>
+    <script src="core/controllers/intro.js"></script>
+    <script src="core/controllers/login.js"></script>
+    <script src="core/controllers/signup.js"></script>
+    <script src="core/controllers/main.js"></script>
+    <script src="core/controllers/home.js"></script>
+    <script src="core/controllers/select-city.js"></script>
+    <script src="core/controllers/select-region.js"></script>
+    <script src="core/controllers/select-market.js"></script>
+    <script src="core/controllers/category.js"></script>
+    <script src="core/controllers/product-category.js"></script>
+    <script src="core/controllers/product-detail.js"></script>
+    <script src="core/controllers/cart.js"></script>
+    <script src="core/controllers/shipping.js"></script>
+    <script src="core/controllers/payment.js"></script>
+    <script src="core/controllers/done.js"></script>
+    <script src="core/controllers/orders.js"></script>
+    <script src="core/controllers/mom-detail.js"></script>
+    <script src="core/controllers/mom-pregnant.js"></script>
+    <script src="core/controllers/profile.js"></script>
+    <script src="core/controllers/modal.js"></script>
+    <script src="core/controllers/contact-us.js"></script>
+    <script src="core/controllers/histories.js"></script>
+    <script src="core/controllers/help.js"></script>
+    <script src="core/controllers/order-testimonial.js"></script>
+    <script src="core/controllers/order-summary.js"></script>
+    <script src="core/controllers/e-wallet.js"></script>
+    <script src="core/controllers/e-wallet-detail.js"></script>
+    <script src="core/controllers/change-password.js"></script>
+    <script src="core/controllers/forgot-password.js"></script>
+    <script src="core/controllers/wizard-company.js"></script>
+    <script src="core/controllers/change-company.js"></script>
+    <script src="core/directives/star-rating.js"></script>
+
+    <script src="core/services/localstorage.js"></script>
+    <script src="core/services/api.js"></script>
+   <!-- <script src="core/services/cart.js"></script>-->
+
+
+    <script src="lib/masonry/imagesloaded.pkgd.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular_id-id.js"></script>
+    <script src="lib/masonry/masonry.pkgd.min.js"></script>
+    <script src="lib/masonry/angular-masonry.js" type="text/javascript"></script>
+    <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script src="lib/maps/lodash.min.js"></script>
+    <script src="lib/maps/angular-simple-logger.js"></script>
+    <script src="lib/maps/angular-google-maps.min.js"></script>
+  </head>
+  <body ng-app="enterpriseApp" class="platform-android platform-cordova platform-webview">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

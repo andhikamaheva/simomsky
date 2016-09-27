@@ -1,0 +1,22 @@
+<ion-view view-title="Profile">
+  <ion-content "dark-bg">
+   <ion-refresher
+     pulling-text="Tarik untuk memperbarui..."
+     on-refresh="getProfile()">
+   </ion-refresher>
+    <div class="hero assertive-bg ">
+      <div class="content">
+        <div class="avatar" style="background-image: url('img/avatar.png');"></div>
+        <h3><a class="light">{{user.data.name}}</a></h3>
+        <h4><a class="light">{{user.data.username}}</a></h4>
+      </div>
+    </div>
+    <div class="list">     
+      <a class="item item-icon-right" ng-click="logout()">
+        <h2>Keluar</h2>
+        <p></p>
+        <i class="icon ion-log-out muted"></i>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

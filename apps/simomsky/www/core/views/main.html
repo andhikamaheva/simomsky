@@ -1,0 +1,146 @@
+<ion-nav-bar class="bar-assertive flat" align-title="center">
+<!--
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+!-->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-ios-arrow-back" ng-show="showHeaderBack" ng-click="headerBackState()"></button>
+    <button class="button button-icon button-clear ion-android-search" ng-show="showHeaderSearch" ng-click="openSearchModal()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+   <button class="button button-icon button-clear ion-plus-round" ng-show="showHeaderAdd" ng-click="openAddModal()"></button>
+   </ion-nav-buttons>
+</ion-nav-bar>
+
+<ion-nav-view name="fabContent"></ion-nav-view>
+<ion-nav-view name="menuContent"></ion-nav-view>
+
+<ion-tabs class="tabs-icon-top tabs-assertive">
+        <ion-tab title="Si Moms" icon="ion-heart" href="#/app/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Histori" icon="ion-ios-paper" href="#/app/histories">
+          <ion-nav-view name="histories-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Bantuan" icon="ion-help-circled" href="#/app/help">
+          <ion-nav-view name="help-tab"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Akun" icon="ion-person" href="#/app/account">
+          <ion-nav-view name="account-tab"></ion-nav-view>
+        </ion-tab>
+</ion-tabs>
+
+
+<script id="search-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="flat bar-assertive bar-modal">
+            <h1 class="title left">Search</h1>
+            <button class="button button-icon button-clear ion-close-round" ng-click="closeSearchModal()"></button>
+        </ion-header-bar>
+        <ion-content>
+           <div class="row">
+             <div class="col">
+               <label class="item item-input item-floating-label">
+                <span class="input-label">Cari</span>
+                <input type="text" placeholder="Masukan kata kunci" ng-model="searchx.keyword" ng-keyup="">
+            </label>
+             </div>
+           </div>
+           <div class="row">
+            <div class="col">
+             <button class="button button-balanced button-block" ng-click="search()"><i class="ion-search"></i> Cari</button>
+             </div>
+           </div>
+
+           <div class="product-overview">
+             <div class="product-list">
+               <div class="pad-sides" masonry="{columnWidth: 0, gutter: 0, transitionDuration: 0}">
+                 <div class="masonry-brick" ng-repeat="mom in moms" >
+                   <div class="list card flat" ng-click="showDetails(mom.id)">
+                     <div class="item item-body">
+                      <img src="img/moms.png"/>
+                       <h2 class="title">{{ mom.name }}</h2>
+                       <div class="price"><span class="assertive">{{mom.city}}</span></div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+                  <div class="row">
+                   <div ng-show="is_keyword_null" class="col">
+
+                   <div class="empty-result">
+                     <div class="icon-empty">
+                       <span class="icon ion-sad icon-warning assertive"></span>
+                       <i class="icon ion-search"></i>
+                     </div>
+                     <p>Pencarian tidak ditemukan</p><br>
+                   </div>
+
+                  </div>
+                </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="add-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="flat bar-assertive bar-modal">
+            <h1 class="title left" style="text-align:center">Tambah Moms</h1>
+            <button class="button button-icon button-clear ion-close-round" ng-click="closeAddModal()"></button>
+        </ion-header-bar>
+        <ion-content>
+        <div class="padding">
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Nama Lengkap</span>
+            <input type="text" placeholder="" ng-model="params.name" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Tanggal Lahir</span>
+            <input type="text" placeholder="yyyy-mm-dd" ng-model="params.birthdate" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Umur</span>
+            <input type="text" placeholder="" ng-model="params.age" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Nama Suami</span>
+            <input type="text" placeholder="" ng-model="params.husband_name" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Pendidikan</span>
+            <input type="text" placeholder="" ng-model="params.education" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Pekerjaan</span>
+            <input type="text" placeholder="" ng-model="params.work" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Kehamilan Ke -</span>
+            <input type="text" placeholder="" ng-model="params.pregnants" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Alamat</span>
+            <input type="text" placeholder="" ng-model="params.address" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Kota</span>
+            <input type="text" placeholder="" ng-model="params.city" >
+          </label>
+        </div>
+        <button class="button button-balanced button-block" ng-click="addMoms()">Simpan</button>
+        </div>
+      </ion-content>
+
+    </ion-modal-view>
+</script>

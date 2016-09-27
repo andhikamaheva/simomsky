@@ -1,0 +1,144 @@
+<ion-view view-title="Detail Kehamilan">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Tarik untuk memperbarui..."
+      on-refresh="getMom()">
+    </ion-refresher>
+     <div class="hero assertive-bg" style="height:250px;">
+          <div class="row">
+           <div class="col">
+             <div class="border-box order-detail">
+               <i class="icon ion-woman"></i>
+               <span class="small-text">Nama</span>
+               <span class="medium-text">{{mom.name}} ({{mom.age}})</span>
+             </div>
+           </div>
+           <div class="col">
+             <div class="border-box order-detail">
+               <i class="icon ion-android-home"></i>
+               <span class="small-text">Alamat</span>
+               <span class="medium-text">{{mom.address}}, {{mom.city}}</span>
+             </div>
+           </div>
+         </div>
+          <div class="row">
+            <div class="col">
+              <div class="border-box order-detail">
+                <i class="icon ion-clock"></i>
+                <span class="small-text">Terakhir Periksa</span>
+                <span class="medium-text">{{mom.created_at}}</span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="border-box order-detail">
+                <i class="icon ion-android-contact"></i>
+                <span class="small-text">Kehamilan Ke</span>
+                <span class="medium-text">{{mom.pregnants}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+           <div class="col">
+            <div class="border-box order-detail" style="height:37px;">
+              Status Kehamilan : <span ng-class="getStatusClass(mom.pregnant_status)">{{mom.pregnant_status}}</span>
+            </div>
+           </div>
+          </div>
+        </div>
+        <div class="card" ng-repeat="quarter in quarterly" ng-show="available == false" ng-click="openModal(quarter.id)">
+         <div class="item item-divider">
+         Triwulan {{quarter.quarterly_id}}
+         </div>
+         <div class="item item-text-wrap">
+           <div class ="row">
+            <span ng-class="getStatusClass(quarter.status)">{{quarter.status}}</span>
+             Periksa Tanggal : {{quarter.date}}<br>
+             Skor : {{quarter.score}}<br>
+             {{quarter.risk}}
+           </div>
+         </div>
+        </div>
+        <div class="empty-result" ng-show="available == true">
+          <div class="icon-empty">
+            <span class="icon ion-sad icon-warning assertive"></span>
+            <i class="icon ion-ios-list"></i>
+          </div>
+          <p>Tidak ada histori kehamilan</p><br>
+        </div>
+      </ion-content>
+
+
+
+</ion-view>
+
+<script id="modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="flat bar-assertive bar-modal">
+            <h1 class="title left" style="text-align:center">Deteksi Kehamilan</h1>
+            <button class="button button-icon button-clear ion-close-round" ng-click="closeModal()"></button>
+        </ion-header-bar>
+        <ion-content>
+        <div class="padding">
+        <ion-list>
+
+  <ion-checkbox ng-model="answer.satu" ng-true-value="4">Apakah Ibu hamil berumur<br> kurang dari 17 tahun?</ion-checkbox>
+
+  <ion-checkbox ng-model="answer.dua_a" ng-true-value="4">Apakah usia pernikahan lebih dari 3<br> tahun saat kehamilan pertama?</ion-checkbox>
+
+  <ion-checkbox ng-model="answer.dua_b" ng-true-value="4">Apakah usia Ibu melebihi<br> 34 tahun pada kehamilan pertama?</ion-checkbox>
+
+   <ion-checkbox ng-model="answer.tiga" ng-true-value="4">Apakah Ibu terlalu cepat hamil lagi<br> dengan jarak kurang 2 tahun dari<br> kehamilan sebelumnya?</ion-checkbox>
+
+  <ion-checkbox ng-model="answer.empat" ng-true-value="4">Apakah Ibu terlalu lama<br> untuk hamil kembali (jarak antar<br> kehamilan lebih dari 9 tahun) ?</ion-checkbox>
+
+    <ion-checkbox ng-model="answer.lima" ng-true-value="4">Apakah Ibu memiliki anak lebih dari 3 ?</ion-checkbox>
+
+   <ion-checkbox ng-model="answer.enam" ng-true-value="4">Usia Ibu terlalu tua di atas 34 tahun? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.tujuh" ng-true-value="4">Tinggi Ibu kurang dari 146 cm?  </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.delapan" ng-true-value="4">Apakah Ibu pernah mengalami<br> gagal kehamilan? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.sembilan_a" ng-true-value="4">Apakah Ibu pernah melahirkan <br>dengan bantuan tang/vakum? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sembilan_b" ng-true-value="4">Apakah Ibu pernah melahirkan <br>dengan bantuan uri dirogoh? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sembilan_c" ng-true-value="4">Apakah Ibu pernah melahirkan <br>dengan bantuan transfusi darah? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.sepuluh" ng-true-value="8">Apakah Ibu pernah mengalami<br> operasi sesar saat melahirkan? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_a" ng-true-value="4">Apakah Ibu mengidap penyakit <br>kurang darah saat kehamilan ini?  </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_b" ng-true-value="4">Apakah	Ibu mengidap penyakit <br>malaria saat kehamilan ini?  </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_c" ng-true-value="4">Apakah Ibu mengidap penyakit <br>TBC saat kehamilan ini? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_d" ng-true-value="4">Apakah Ibu mengidap penyakit payah<br> jantung saat kehamilan ini? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_e" ng-true-value="4">Apakah Ibu mengidap penyakit<br> Diabetes saat kehamilan ini?</ion-checkbox>
+
+    <ion-checkbox ng-model="answer.sebelas_f" ng-true-value="4">Apakah Ibu mengidap penyakit menular<br> seksual saat kehamilan ini? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.duabelas" ng-true-value="4">Apakah Ibu mengidap penyakit menular <br>seksual saat kehamilan ini? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.tigabelas" ng-true-value="4">Apakah Ibu mengandung bayi kembar<br> atau lebih?</ion-checkbox>
+
+   <ion-checkbox ng-model="answer.empatbelas" ng-true-value="4">Apakah Ibu mengalami kehamilan<br> hydramnion (kembar air)?</ion-checkbox>
+
+   <ion-checkbox ng-model="answer.limabelas" ng-true-value="4">Apakah bayi mati dalam kandungan? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.enambelas" ng-true-value="4">Apakah kehamilan lebih dari<br> 9 bulan saat ini? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.tujuhbelas" ng-true-value="8">Apakah letak bayi<br> sungsang saat kehamilan ini? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.delapanbelas" ng-true-value="8">Apakah letak bayi<br> lintang saat kehamilan ini? </ion-checkbox>
+
+   <ion-checkbox ng-model="answer.sembilanbelas" ng-true-value="8">Apakah Ibu mengalami pendarahan <br>saat	kehamilan ini? </ion-checkbox>
+
+    <ion-checkbox ng-model="answer.duapuluh" ng-true-value="8">Apakah Ibu pernah mengalami <br>kejang-kejang saat kehamilan ini? </ion-checkbox>
+</ion-list>
+        <button class="button button-balanced button-block" ng-click="calculateNow()">Simpan</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+</script>
